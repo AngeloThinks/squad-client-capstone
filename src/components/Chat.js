@@ -1,6 +1,6 @@
 import { Avatar, IconButton } from "@material-ui/core";
 import { AttachFile, MoreVert, SearchOutlined } from "@material-ui/icons";
-import  InsertEmoticonIcon  from "@material-ui/icons/InsertEmoticon";
+import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import MicIcon from "@material-ui/icons/Mic";
 
 import React from "react";
@@ -32,30 +32,22 @@ function Chat() {
         <p className="chat__message">
           <span className="chat__name">Angelo</span>
           This is a message
-          <span className="chat__timestamp">
-          {new Date().toUTCString()}
-          </span>
+          <span className="chat__timestamp">{new Date().toUTCString()}</span>
         </p>
         <p className="chat__message chat__receiver">
           <span className="chat__name">Angelo</span>
           This is a message
-          <span className="chat__timestamp">
-          {new Date().toUTCString()}
-          </span>
+          <span className="chat__timestamp">{new Date().toUTCString()}</span>
         </p>
       </div>
-        <div className="chat__footer">
-            <InsertEmoticonIcon/>
-            <form>
-                <input placeholder='Type a message' type='text'></input>
-                <button type='submit'>
-                Send
-                </button>
-            </form>
-            <MicIcon/>
-
-        </div>
-
+      <div className="chat__footer">
+        <InsertEmoticonIcon />
+        <form>
+          <input placeholder="Type a message" type="text"></input>
+          <button type="submit">Send</button>
+        </form>
+        <MicIcon />
+      </div>
     </div>
   );
 }
