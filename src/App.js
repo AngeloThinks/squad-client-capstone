@@ -3,7 +3,7 @@ import "./App.css";
 import Chat from "./components/Chat";
 import Sidebar from "./components/Sidebar";
 import Pusher from "pusher-js";
-import axios from "./components/axios";
+import axios from "./components/axios"; 
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -20,16 +20,25 @@ function App() {
     });
 
     const channel = pusher.subscribe("messages");
-    channel.bind("inserted", (data) => {
-      alert(JSON.stringify(data));
+    channel.bind("inserted", (newMessages) => {
+      setMessages([...messages, newMessages])
     });
-  }, []);
+
+    return () => {
+      channel.unbind_all();
+      channel.unsubscribe();
+    }
+
+  }, [messages]);
+
+
   console.log(messages);
+
   return (
     <div className="app">
       <div className="app__body">
         <Sidebar />
-        <Chat />
+        <Chat messages={messages}/>
       </div>
     </div>
   );
